@@ -17,6 +17,15 @@ CiviCRM fatal errors are characterized by a yellow background:
 
 ![Fatal error screenshot without debug/backtrace enabled](img/fatal-error.jpg)
 
+Many CiviCRM screens appear in a "modal dialog".  That is, they appear in a box that overlays but does not replace the previous screen - for example, clicking "Record Contribution" from a contact record.  Errors while viewing these screens will often display with a notification reading, "Network Error: Unable to reach the server.  Please refresh this page in your browser and try again.
+
+![Network error screenshot][img/network-error.png]
+
+When you receive a "Network Error" message, you can display the underlying error by repeating the action that caused the error, but instead of clicking the link directly, right-click the link and select "Open in New Tab".
+
+!!! tip
+    For content that loads via AJAX (for instance, accordion widgets that only load contact when the accordion is opened) you will sometimes receive the "endless spinning CiviCRM logo" instead of a fatal error.  In these situations, you will find the error by opening your browser's development tools (by **pressing F12**), selecting the **Network tab**, and repeating the steps that led to the error.  You will find a line in the network tab with an error status.  Clicking on the line and selecting the **Response** sub-tab will show the error page.
+
 ### Review the CiviCRM log
 
 If you have direct access to the files on your server, the CiviCRM log can be found in the ConfigAndLog directory.  [Directions to find the ConfigAndLog directory can be found here](https://civicrm.stackexchange.com/a/15932/12).  Errors are labeled with timestamps, and include both debug and backtrace information.
