@@ -262,6 +262,13 @@ for auto filing, you need to set up CiviMail so it knows how to read it:
 1. If your mail server supports it, specify IMAP **protocol** and check **SLL**, otherwise use POP.
 1. You can specify an IMAP folder in the **source** field using the syntax INBOX.CiviMail. **Note:** Some exchange servers may not be configured in a compatible way. In that case, you can configure a script like fetchmail and use Maildir.
 1. In the **Used for?** field you can choose whether you want to use the email account for **Bounce Processing** or **Email-to-Activity Processing** (or Auto filing). You can have multiple accounts specified for auto filing but only one for bounce processing. This will be marked as default.
+If **Email-to-Activity Processing** value is selected then some additional settings are available to customise email filing:
+   - **Skip emails which do not have a Case ID or Case hash** checkbox (defaults to unticked).
+     If checked - emails which do not have a valid case ID or case hash would be moved into the ignored mail folder after processing and no activity would be created.
+   - **Do not create new contacts when filing emails** checkbox (defaults to unticked).
+     If checked - when CiviCRM checks for a matching contact, if no matching contact is found it will not create one and the email is filed.
+     So administrator is able to configure whether CiviCRM will create a new contact where a contact does not already exist within the system when filing inbound emails, so that he can ensure that new contacts are not created in the system when filing an email. The email would still be filed, even if no contacts are matched, but in this case sender gets recorded on the activity, e.g. the cron contact.
+   - **Activity Status** - here you can select the initial status for activities created during email filing.
 
 Once the **Bounce Processing** mailbox is configured, you will need to
 configure CiviMail to empty it, read all these bounced messages and
