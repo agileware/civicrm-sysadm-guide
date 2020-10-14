@@ -145,7 +145,7 @@ You can use either the [REST interface](https://docs.civicrm.org/dev/en/latest/a
 
 The URL you need to call depends on the CMS you are using.  In the examples below, replace `<cron-url>` with one of the following (using `http` or `https` as appropriate).
 
-* Drupal:
+* Drupal 7:
    
     ```
     https://example.org/sites/all/modules/civicrm/bin/cron.php
