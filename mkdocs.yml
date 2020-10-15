@@ -26,6 +26,7 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.betterem
   - pymdownx.mark
+  - pymdownx.details
 
 plugins:
   - search:
@@ -68,8 +69,8 @@ nav:
   - Multisite: setup/multisite.md
 - Upgrades:
   - Upgrades: upgrade/index.md
-  #- Upgrade in Drupal 8: upgrade/drupal8.md
   - Upgrade in Drupal 7: upgrade/drupal7.md
+  - Upgrade in Drupal 8: upgrade/drupal8.md
   - Upgrade in WordPress: upgrade/wordpress.md
   - Upgrade in Joomla: upgrade/joomla.md
   - Upgrade in Backdrop: upgrade/backdrop.md
