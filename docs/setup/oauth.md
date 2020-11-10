@@ -56,8 +56,9 @@ On a conceptual level, the configuration tasks will work the same way in most de
 * On the OAuth2 client, determine the "Redirect URL" and the "Scopes". Copy these to the OAuth2 provider.
 * On the OAuth2 provider, determine the "Client ID" and "Client Secret". Copy these to the OAuth2 client.
 
-In practice, the real-world pages will vary on a case-by-case basis.  If you understand the general steps, then you may be able to figure
-out the details. However, we discuss a few specific cases below ([Register the Connection](#register)).
+In practice, real-world pages will vary.  For example: some providers may put all the config information on a single page, and others may
+split it across multiple pages.  If you understand the general steps, then you may be able to figure out the details.  However, we discuss
+a few specific cases below (["Register the connection"](#register)).
 
 ## Enable the module
 
@@ -96,19 +97,23 @@ the command-line or the Javascript console.
 ## Register the connection {:#register}
 
 To setup a new connection, you must simultaneously configure the client-side (eg CiviCRM) and the remote provider-side (eg Google or
-Microsoft). You should plan to open them at the same time (*in separate tabs*).
+Microsoft). You should plan to open them at the same time (*in separate tabs or windows*).
 
 We first discuss the CiviCRM side, and then consider a few common providers.
 
 ### CiviCRM (Client) {:#civicrm-client}
 
-* Navigate to "Administer => System Settings => OAuth"
-* Choose the relevant web-service provider (e.g. `gmail` or `ms-exchange`).
-* For a new service, this will open the "Register Client" tab:
+For CiviCRM, you can register a connection via web-browser or command-line.
 
-    ![](../img/OAuthAdmin-MSEO.png)
+??? howto "Register in CiviCRM via web browser"
 
-    * You will copy the "Redirect URL" and the list of scopes to the provider.
+    * Navigate to "Administer => System Settings => OAuth"
+    * Choose the relevant web-service provider (e.g. `gmail` or `ms-exchange`).
+    * For a new service, this will open the "Register Client" tab:
+
+      ![](../img/OAuthAdmin-MSEO.png)
+
+    * Note the "Redirect URL" and the list of scopes. Copy these over to the provider's site.
 
         ??? question "Question: What if the "Redirect URL" has a warning about HTTP(S)?"
 
@@ -135,8 +140,63 @@ We first discuss the CiviCRM side, and then consider a few common providers.
                     ```
                 * Use `https://example.com/my-intermediate-url` as the "Redirect URL".
 
+
     * On the provider's web site, find or initialize the "Client ID" and "Client Secret". Paste these values into the client.
     * Click "Add".
+
+??? howto "Register in CiviCRM via command line"
+
+    Determine the symbolic name of the remote provider:
+
+    ```
+    cv api4 OAuthProvider.get -T +s name,title
+    ```
+
+    ```
+    +-------------+----------------------------+
+    | name        | title                      |
+    +-------------+----------------------------+
+    | gmail       | Google Mail                |
+    | ms-exchange | Microsoft Exchange Online  |
+    | demo        | Local Demo                 |
+    +-------------+----------------------------+
+    ```
+
+    Determine the scopes needed for this provider:
+
+    ```
+    cv api4 OAuthProvider.get +w name="NAME"
+    ```
+
+    ```javascript
+    {
+       "name": "demo",
+       "options": {
+           "scopes": [
+               "read_mail",
+               "openid"
+           ]
+       }
+    }
+    ```
+
+    Determine the "Redirect URL":
+
+    ```
+    cv ev 'return CRM_OAuth_BAO_OAuthClient::getRedirectUri();'
+    ```
+
+    ```
+    "https://example.com/civicrm/oauth-client/return"
+    ```
+
+    Copy the "Redirect URL" and "Scopes" to the provider registration page.
+
+    Finally, copy back the "Client ID" and "Client Secret". These can be stored:
+
+    ```
+    cv api4 OAuthClient.create +v provider="NAME" +v guid="CLIENT_ID" +v secret="CLIENT_SECRET"
+    ```
 
 ### Google Mail (Provider) {:#gmail}
 
@@ -175,18 +235,18 @@ After registering OAuth2 details with CiviCRM and Microsoft, you can [add an inc
 Registering the connection (above) allows your CiviCRM site to connect to the remote provider. Next, you will need to request access to *specific resources*
 (such as specific user-accounts or documents).
 
-The steps will depend on the use-case. For relevant documentation, see:
+The steps will depend on what you wish to access. Ideally, there will be targetted documentation such as:
 
 * [CiviMail setup: Adding an incoming email account for processing bounces and/or email-to-activities](civimail/index.md#adding-an-incoming-email-account-for-processing-bounces-andor-email-to-activities)
 
 <!-- add more to the bulleted list... -->
 
-In some cases, there may not be additional documentation. This can happen if:
+For some use-cases, there may not be additional documentation. This can happen if:
 
 * You are using a simple OAuth integration which only requires one access token.
 * You are developing/debugging a new integration which is not fully written.
 
-As a fallback, you can use these generic steps to *request and store* an access token:
+As a fallback, you can use these *generic steps* to authorize access:
 
 * Navigate to "Administer => System Settings => OAuth".
 * Choose the relevant web-service provider.
@@ -196,7 +256,7 @@ As a fallback, you can use these generic steps to *request and store* an access 
 
 * Click "Add (Auth Code)". This will initiate an [OAuth2 Authorization Code Grant](https://tools.ietf.org/html/rfc6749#section-4.1).
   <!-- TODO: Add buttons for userPassword and clientCredential grants. -->
-* The browser will redirect to the provider's site. Choose the desired account and approve access.
+* The browser will redirect to the provider's site. The site may prompt for your approval.
 * The browser will redirect back to CiviCRM. You will see an *access token* was created:
 
     ![](../img/OAuthDemo-2.png)
