@@ -157,10 +157,8 @@ The Google Mail integration allows you to register a "Mail Account" hosted by Go
 
     See also: [OAuth API verification FAQs](https://support.google.com/cloud/answer/9110914) which discuss sensitive and restricted APIs.
 
-After registering OAuth2 details with CiviCRM and Google, you can:
 
-* Navigate to "Administer => CiviMail => Mail Accounts"
-* Add a specific email account.
+After registering OAuth2 details with CiviCRM and Microsoft, you can [add an incoming email account](civimail/index.md#adding-an-incoming-email-account-for-processing-bounces-andor-email-to-activities).
 
 ### Microsoft Exchange (Provider) {:#ms-exchange}
 
@@ -170,42 +168,25 @@ The Microsoft Exchange Online integration allows you to register a "Mail Account
 * [Documentation: Quickstart: Register an application with the Microsoft identity platform](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
 * [Documentation: Authenticate an IMAP, POP or SMTP connection using OAuth](https://docs.microsoft.com/en-us/exchange/client-developer/legacy-protocols/how-to-authenticate-an-imap-pop-smtp-application-by-using-oauth)
 
-After registering OAuth2 details with CiviCRM and Microsoft, you can:
-
-* Navigate to "Administer => CiviMail => Mail Accounts"
-* Add a specific email account.
+After registering OAuth2 details with CiviCRM and Microsoft, you can [add an incoming email account](civimail/index.md#adding-an-incoming-email-account-for-processing-bounces-andor-email-to-activities).
 
 ## Authorize access to resources
 
-After registering the connection between the client and the provider, you need to use it!
+Registering the connection (above) allows your CiviCRM site to connect to the remote provider. Next, you will need to request access to *specific resources*
+(such as specific user-accounts or documents).
 
-Generally, it is ideal to integrate OAuth2 resources into other parts of the application, but that requires development work.  Let's
-consider two examples --  a richer, more-developed example and a generic, less-developed example.
+The steps will depend on the use-case. For relevant documentation, see:
 
-### Add a mail account
+* [CiviMail setup: Adding an incoming email account for processing bounces and/or email-to-activities](civimail/index.md#adding-an-incoming-email-account-for-processing-bounces-andor-email-to-activities)
 
-If you have setup an email service like "Google Mail" or "Microsoft Exchange", then:
+<!-- add more to the bulleted list... -->
 
-* Navigate to "CiviCRM => CiviMail => Mail Accounts".
-* Under "Add Mail Account", you will see an option for the email provider (eg Google or Microsoft). Click it.
+In some cases, there may not be additional documentation. This can happen if:
 
-    ![](../img/AddMailAccount.png)
+* You are using a simple OAuth integration which only requires one access token.
+* You are developing/debugging a new integration which is not fully written.
 
-* The browser will redirect to the Google or Microsoft login screen. Choose the desired account and approve access.
-* The browser will redirect back to CiviCRM.  You will see a configuration screen with some defaults pre-populated.
-
-    ![](../img/AddMailAccount-Details.png)
-
-    ??? note "Note: Leave the password blank"
-
-        The email account uses OAuth2 -- so it does not need a password.
-
-At this point, you have a "Mail Account" linked via OAuth2. Consult the documentation for CiviMail and/or CiviCase
-for setting additional options.
-
-### Add a generic token
-
-These generic steps are useful for some simple integrations, for development, and possibly for debugging.
+As a fallback, you can use these generic steps to *request and store* an access token:
 
 * Navigate to "Administer => System Settings => OAuth".
 * Choose the relevant web-service provider.
@@ -227,7 +208,7 @@ These generic steps are useful for some simple integrations, for development, an
         This reveals the raw token, which you may use to send improvised API/HTTP requests.  Additionally, if the token is based on
         [JWT](https://en.wikipedia.org/wiki/JSON_Web_Token), it can reveal any claims included with the token.
 
-At this point, CiviCRM is storing the *access token*. However, it is inert. To *use* the token, one must develop or install a suitable extension.
+By itself, the access token is inert. To *use* the token, one must develop or install a suitable extension.
 
 <!-- TODO, When the dev guide has a page, link to it... -->
 
