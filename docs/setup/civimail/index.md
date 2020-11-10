@@ -248,18 +248,53 @@ There are several ways of configuring your incoming mailbox:
     this account so it doesn't discard as spam all the bounced email it
     will receive.
 
+### (Optional) Enabling OAuth authentication {:#oauth}
+
+Traditionally, to retrieve inbound email via IMAP/POP, one must authenticate with a username and password.  Some large technology vendors
+(such as Google Mail and Microsoft Exchange Online) are pursuing a long-term migration to OAuth. OAuth removes the "password" and replaces
+it with a hidden, unique "access token".
+
+If your vendor is migrating to OAuth, this will require additional configuration steps. Please see [Setup: OAuth](../oauth.md) for more information.
+
 ### Adding an incoming email account for processing bounces and/or email-to-activities
 
 Once you have created your email account to receive bounces or emails
 for auto filing, you need to set up CiviMail so it knows how to read it:
 
 1. Navigate to **Administer > CiviMail > Mail accounts**.
-1. Identify the default mail account used for bounce processing, and **edit** that account. 
+1. Decide whether to update or add the mail account:
+
+    ???+ note "Updating the default account"
+
+        On a new, unconfigured deployment, there will be a "default" account with placeholder options.
+        You can edit this account and fill-in real options.
+
+        This works well for traditional email providers using IMAP/POP and username/password, but it will not work for OAuth providers.
+
+    ??? note "Adding an account via OAuth"
+
+        If your provider [requires OAuth](#oauth), and if you [setup OAuth](../oauth.md),
+        then click "Add Mail Account" and choose the provider:
+
+        ![](../../img/AddMailAccount.png)
+
+        The browser will redirect to the Google or Microsoft login screen. After choosing the account, it will return to
+        CiviCRM, and several defaults will be pre-populated.
+
+        ![](../../img/AddMailAccount-Details.png)
+
+        Of course, these are merely defaults. You should continue reviewing the settings.
+
 1. Specify the mail **server, username, and password** you used when creating the account.
+
+    ??? note "Password is ignored on OAuth accounts."
+
+        If the account was added via OAuth, then the password is not used.
+
 1. The **local part** is optional and only relevant if you were able to set up an account using sub-addressing. It should be the account you created with '+' or '-' appended , e.g., "return+" or "return-".
 1. The **email domain** is the domain of your email address (example.org).
 1. You can leave the **return path** empty.
-1. If your mail server supports it, specify IMAP **protocol** and check **SLL**, otherwise use POP.
+1. If your mail server supports it, specify IMAP **protocol** and check **SSL**, otherwise use POP.
 1. You can specify an IMAP folder in the **source** field using the syntax INBOX.CiviMail. **Note:** Some exchange servers may not be configured in a compatible way. In that case, you can configure a script like fetchmail and use Maildir.
 1. In the **Used for?** field you can choose whether you want to use the email account for **Bounce Processing** or **Email-to-Activity Processing** (or Auto filing). You can have multiple accounts specified for auto filing but only one for bounce processing. This will be marked as default.
 If **Email-to-Activity Processing** value is selected then some additional settings are available to customise email filing:
