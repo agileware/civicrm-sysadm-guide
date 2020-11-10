@@ -15,20 +15,22 @@ perspective and then dig into some specifics.
 
 ## Primer
 
-<!-- 
+<!--
 Public documentation for OAuth is largely oriented toward developers -- for example, [RFC 6749](https://tools.ietf.org/html/rfc6749) and [Digital
 Ocean's tutorial](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) are good documents which describe the protocol's
 concepts and dataflows along with example HTTP interactions. But for sysadmins, a higher-level makes sense.
 -->
 
 As a consumer of a typical web application, you may use OAuth2 without being aware of it.  What you experience is a redirect between
-different websites.  For example, you might visit the website of a small organization, *the Dolphin Defense League* (green), which acts as the
-*OAuth2 client*.  It directs the user to a large technology company, *Microkookle* (yellow), which acts as the *OAuth2 provider*.
+different websites.
 
 ![](../img/OAuthBasic-Plain.png)
 
+In the above example, one visits the website of a small organization, *the Dolphin Defense League* (green), which acts as the
+*OAuth2 client*.  It directs the user to a large technology company, *Microkookle* (yellow), which acts as the *OAuth2 provider*.
+
 After following this pageflow, the *Dolphin* site is authorized to send API requests for *Mr. Flipper*'s information. (Specifically, the
-*Dolphin* site holds an *access token*. Whenever a background process needs to work with *Mr. Flipper*'s data, it will use the token.)
+*Dolphin* site holds an *access token*. Whenever a background process needs to work with *Mr. Flipper*'s data, it will use the access token.)
 
 In this flow, we can see a few important variables -- these are the configuration options that you will have to set as an administrator.
 Let's annotate the pageflow to highlight them.
@@ -55,7 +57,7 @@ On a conceptual level, the configuration tasks will work the same way in most de
 * On the OAuth2 provider, determine the "Client ID" and "Client Secret". Copy these to the OAuth2 client.
 
 In practice, the real-world pages will vary on a case-by-case basis.  If you understand the general steps, then you may be able to figure
-out the details. However, we discuss a few specific cases below.
+out the details. However, we discuss a few specific cases below ([Register the Connection](#register)).
 
 ## Enable the module
 
@@ -65,11 +67,11 @@ the command-line or the Javascript console.
 ??? howto "Enable via command line"
 
     Steps:
-    
+
     * Open a command-line for the site. (This often requires SSH.)
     * Navigate to the site folder
     * Enable the module
-    
+
     For example:
 
     ```
@@ -77,7 +79,7 @@ the command-line or the Javascript console.
     cd /var/www/example.com/web
     cv en oauth_client
     ```
-    
+
     <!-- TODO: sometime in 2021+, change `oauth_client` to `oauth-client`. The dash is more canonical. Current cv accepts either. However, older versions of cv had a bug with the dashed form.. -->
 
 ??? howto "Enable via Javascript console"
@@ -94,7 +96,9 @@ the command-line or the Javascript console.
 ## Register the connection {:#register}
 
 To setup a new connection, you must simultaneously configure the client-side (eg CiviCRM) and the remote provider-side (eg Google or
-Microsoft).  We first discuss the CiviCRM side, and then consider a few common providers.
+Microsoft). You should plan to open them at the same time (*in separate tabs*).
+
+We first discuss the CiviCRM side, and then consider a few common providers.
 
 ### CiviCRM (Client) {:#civicrm-client}
 
@@ -107,7 +111,7 @@ Microsoft).  We first discuss the CiviCRM side, and then consider a few common p
     * You will copy the "Redirect URL" and the list of scopes to the provider.
 
         ??? question "Question: What if the "Redirect URL" has a warning about HTTP(S)?"
-        
+
             OAuth2 providers often have restrictions on what makes a valid "Redirect URL" -- they often require the use of HTTPS or (as a
             fallback) they allow HTTP on `localhost` (`127.0.0.1`) deployments.  Other hostnames and IPs may not use HTTP (*even if they
             are private or functionally equivalent*).
@@ -117,7 +121,7 @@ Microsoft).  We first discuss the CiviCRM side, and then consider a few common p
             non-compliant.
 
             Here are some alternative options to work-around the restrictions for internal dev/test sites:
-            
+
             * Enable HTTPS for the internal dev/test site.
             * Change the URL to be strictly `http://localhost:NNN` or `http://127.0.0.1:NNN`.
             * Setup an intermediate URL on `http://localhost:NNN`. The script `ext/oauth-client/bin/local-redir.sh` does this automatically.
@@ -148,14 +152,14 @@ The Google Mail integration allows you to register a "Mail Account" hosted by Go
 
     You may find that the restrictions quite acceptable if you have a custom Google Apps domain (where both the email-account and the API project are
     associated with the same domain).
-    
+
     For other arrangements, you may find extra warnings, limits, or verificaton steps.
 
     See also: [OAuth API verification FAQs](https://support.google.com/cloud/answer/9110914) which discuss sensitive and restricted APIs.
 
 After registering OAuth2 details with CiviCRM and Google, you can:
 
-* Navigate to "Administer => CiviMail => Mail Accounts" 
+* Navigate to "Administer => CiviMail => Mail Accounts"
 * Add a specific email account.
 
 ### Microsoft Exchange (Provider) {:#ms-exchange}
@@ -181,14 +185,14 @@ consider two examples --  a richer, more-developed example and a generic, less-d
 ### Add a mail account
 
 If you have setup an email service like "Google Mail" or "Microsoft Exchange", then:
-    
+
 * Navigate to "CiviCRM => CiviMail => Mail Accounts".
 * Under "Add Mail Account", you will see an option for the email provider (eg Google or Microsoft). Click it.
 
     ![](../img/AddMailAccount.png)
 
 * The browser will redirect to the Google or Microsoft login screen. Choose the desired account and approve access.
-* The browser will redirect back to CiviCRM.  You will see a configuration screen with some defaults pre-populated.  
+* The browser will redirect back to CiviCRM.  You will see a configuration screen with some defaults pre-populated.
 
     ![](../img/AddMailAccount-Details.png)
 
