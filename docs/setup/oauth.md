@@ -8,7 +8,7 @@
 The OAuth protocols define an access-control system for Internet-based services.  Compared to traditional access-control mechanisms (like
 simple password-based logins), OAuth provides more security features.  For example, it can grant limited access to specific resources, and
 it can de-list devices or applications which misbehave.  These features make it well-suited to large-scale technology providers like
-Google, Microsoft, or Facebook.  If you wish to have CiviCRM interact with thir API's, then you probably need to configure OAuth.
+Google, Microsoft, or Facebook.  If you wish to have CiviCRM interact with their APIs, then you probably need to configure OAuth.
 
 At time of writing, most implementations use OAuth version 2 (OAuth2).  We will briefly recap OAuth2 from a system-administration
 perspective and then dig into some specifics.
