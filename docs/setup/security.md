@@ -134,8 +134,7 @@ examined:
 ## Filesystem permissions
 
 !!! tip
-    There is a [detailed post on Stack Exchange about CiviCRM file permissions]
-    (https://civicrm.stackexchange.com/questions/168/are-there-recommended-directory-ownership-and-permission-settings-for-civicrm-fi#answer-11640). In particular it points out that allowing the code to be writable by the web server
+    There is a [detailed post on Stack Exchange about CiviCRM file permissions](https://civicrm.stackexchange.com/questions/168/are-there-recommended-directory-ownership-and-permission-settings-for-civicrm-fi#answer-11640). In particular it points out that allowing the code to be writable by the web server
     greatly increases the risk of a hack. However, if the directories in the file system containing PHP code are not writable by the
     web server, then installation of extensions via the browser UI may fail (as will updates of the CMS
     via the browser, such as WordPress offers). Besides, on shared hosting it may not
