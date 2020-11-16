@@ -5,10 +5,10 @@
 CiviCRM has built in support for multisite access - several separate sites accessing the same CiviCRM database. (this is different to the Drupal concept which means shared codebase). In most cases a site will be defined by a distinct URL
 
 These sites could be:
-* Part of a drupal 'domain module' install - hosted within the same database
+* Part of a Drupal 'domain module' install - hosted within the same database
 * in separate databases sharing a user table (if you do this you probably want the multisite permissioning extension or another piece of code to help you keep uf matches in sync)
 * separate databases with their own user table
-* dissimilar databases - e.g. drupal 7 &  drupal 8 multisites ( this can be a good migration technique.)
+* dissimilar databases - e.g. Drupal 7 &  Drupal 8 multisites ( this can be a good migration technique.)
 
 CiviCRM has no idea which of these configurations you are using & does not need to know
 
@@ -31,13 +31,15 @@ Setting overrides can handle
 * different directories
 * different WysiWIG editors
 * different search options
+
 Use different domains if you want:
-- domain specific membership types
-- domain specific payment processors
-- domain specific different from addresses from CiviMails
-- domain specific link back URLS in CiviMails
-- domain specific domain contact details
-- domain specific SMS Providers
+
+* domain specific membership types
+* domain specific payment processors
+* domain specific different from addresses from CiviMails
+* domain specific link back URLS in CiviMails
+* domain specific domain contact details
+* domain specific SMS Providers
 
 ## Multilevel permissioning behaviour
 
