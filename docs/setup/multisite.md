@@ -10,7 +10,7 @@ These sites could be:
 * separate databases with their own user table
 * dissimilar databases - e.g. Drupal 7 &  Drupal 8 multisites ( this can be a good migration technique.)
 
-CiviCRM has no idea which of these configurations you are using & does not need to know
+CiviCRM has no idea which of these configurations you are using & does not need to know.
 
 You can select from different levels of multisite-ness
 
