@@ -5,6 +5,7 @@
 CiviCRM has built in support for multisite access - several separate sites accessing the same CiviCRM database. (this is different to the Drupal concept which means shared codebase). In most cases a site will be defined by a distinct URL
 
 These sites could be:
+
 * Part of a Drupal 'domain module' install - hosted within the same database
 * in separate databases sharing a user table (if you do this you probably want the multisite permissioning extension or another piece of code to help you keep uf matches in sync)
 * separate databases with their own user table
