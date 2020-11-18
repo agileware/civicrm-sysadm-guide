@@ -40,3 +40,7 @@ if (!defined('CIVICRM_EXCLUDE_DIRS_PATTERN')) {
 ```
 
 Depending on a lot of local factors, this can speed up cache clears, extension installs etc. significantly (e.g. 10× faster has been measured).
+
+## If you use mysql replication consider RPOW to reduce queries on production
+
+The [RPOW](https://github.com/totten/rpow) extension can redirect read only queries to another DB server. This can be helpful if an occassional slow search causes hangs on your main server. You should consider using REDIS as your cache methodology if you are using RPOW (or anyway if you can)
