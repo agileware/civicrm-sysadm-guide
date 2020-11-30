@@ -138,6 +138,16 @@ After determining where the data currently lives, we can suggest a course of act
     * Configure the HTTP server to redirect old URLs to new URLs.
     * Perform aggressive search/replace operations (in the filesystem and the database).
 
+## CiviCRM 5.26
+
+### WordPress 5.5 compatibility
+
+WordPress 5.5 introduces a breaking change for CiviCRM. This issue was fixed in CiviCRM 5.26. Please ensure that you upgrade to CiviCRM 5.26 or later *before* you upgrade to WordPress 5.5 or later.
+
+After upgrading to CiviCRM 5.26 you may need to update the URLs you use for payment processors etc.
+
+Read this blog post for more details of the change: [CiviCRM 5.26 and WordPress Important Notice](https://civicrm.org/blog/kcristiano/civicrm-526-and-wordpress-important-notice)
+
 ## CiviCRM 5.0
 
 ### Flush CiviCRM cache
