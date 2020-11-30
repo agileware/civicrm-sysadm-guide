@@ -529,13 +529,13 @@ CIVI_ROOT=/var/www/civicrm
 PHP=nice -n19 /usr/bin/php
 
 # line to be modified according to the informations below
-# like this: PARAMS= -j -s<default or domain> -u <user> -p <password> -e Job -a process_mailing
+# like this: PARAMS= -s <domain> -u <user> -p <password> -e Job -a process_mailing
 # Sample data here below.
 # Create a CMS user named "mailprocess" or the like with proper permissions to send mailings
-# and put here its credentials (-u and -p options).
+# and pass the credentials for the user using the `-u` and `-p` options. See below for details.
 # Blankspaces matter.
-PARAMS= -j -sdefault -u mailprocess -p password -e Job -a process_mailing
-PARAMSBOUNCE= -j -sdefault -u mailprocess -p password -e Job -a fetch_bounces
+PARAMS= -s default -u mailprocess -p password -e Job -a process_mailing
+PARAMSBOUNCE= -s default -u mailprocess -p password -e Job -a fetch_bounces
 
 # cronjob send
 # m h dom mon dow command
@@ -549,9 +549,9 @@ You don't have to run both scripts at the same frequency. The preceding crontab 
 
 **PARAMS** contains:
 
-1. The site you used, which is **-sdefault**. If you run multiple CiviCRM sites (applicable for Drupal) on a single server, you need to specify your site's domain, such as **-sexample.org**.
-1. The user login account ( **-u mailprocess** ).
-1. The password you defined ( **-p password** ).
+1. The site you use, which is **-s default**. This parameter is optional if you do not run multiple CiviCRM sites. If you run multiple CiviCRM sites (applicable for Drupal) on a single server, you need to specify your site's domain, such as **-s example.org**.
+1. The user login account ( **-u mailprocess** ). This user needs to have [these minimum permissions](../jobs.md#choosing-a-cms-user).
+1. The password you defined for this user account ( **-p password** ).
 1. [The scheduled job](../jobs.md) (-a)
 
 #### Using wget via Crontab
