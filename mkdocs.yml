@@ -104,6 +104,7 @@ nav:
     - Webform: integration/backdrop/webform.md
   - WordPress integration:
     - WordPress integration: integration/wordpress/index.md
+    - Clean URLs: integration/wordpress/clean-urls.md
     - Forms in WordPress: integration/wordpress/forms.md
     - Plugin Integration: integration/wordpress/plugins.md
     - Incompatible plugins: integration/wordpress/incompatibilities.md
