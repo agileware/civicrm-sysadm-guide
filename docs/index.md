@@ -2,7 +2,9 @@
 
 ## Scope of this guide
 
-This guide is for people installing, upgrading, and maintaining a [CiviCRM](https://civicrm.org) instance for an organization.
+This guide is for people setting up, maintaining and upgrading a [CiviCRM](https://civicrm.org) instance for an organization.
+
+The details of how to install CiviCRM have moved to a separate [Installation Guide](https://docs.civicrm.org/installation/en/latest/).
 
 ### System Administrator Guide vs the User Guide
 
