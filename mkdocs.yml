@@ -37,8 +37,6 @@ plugins:
 
 nav:
 - Home: index.md
-- Installation:
-  - Multi-site installation: install/multi-site.md
 - Setup:
   - Setup: setup/index.md
   - Backups: setup/backups.md

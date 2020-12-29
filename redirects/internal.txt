@@ -9,10 +9,12 @@ setup/message-templates https://docs.civicrm.org/user/en/latest/email/message-te
 config/message-templates https://docs.civicrm.org/user/en/latest/email/message-templates
 misc/switch-cms misc/switching-cms/switch-cms
 requirements https://docs.civicrm.org/installation/en/latest/general/requirements
+install https://docs.civicrm.org/installation/en/latest/
 install/backdrop https://docs.civicrm.org/installation/en/latest/backdrop/
 install/drupal7 https://docs.civicrm.org/installation/en/latest/drupal7/
 install/joomla https://docs.civicrm.org/installation/en/latest/joomla/
 install/wordpress https://docs.civicrm.org/installation/en/latest/wordpress/
+install/multi-site https://docs.civicrm.org/installation/en/latest/multisite/
 planning https://docs.civicrm.org/installation/en/latest/planning/
 planning/cms https://docs.civicrm.org/installation/en/latest/planning/cms/
 planning/demo https://docs.civicrm.org/installation/en/latest/planning/demo/
