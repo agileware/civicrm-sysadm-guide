@@ -1,6 +1,6 @@
 # WordPress plugins and themes incompatible with CiviCRM
 
-Because of the huge number and ever-changing nature of community contributed WordPress plugins, CiviCRM cannot guarantee compatibility with contributed plugins. The following information may be of use in trying to identify conflicts, Please add to/edit this information as applicable.
+Because of the huge number and ever-changing nature of community contributed WordPress plugins, CiviCRM cannot guarantee compatibility with contributed plugins. The following information may be of use in trying to identify conflicts. Please add to/edit this information as applicable.
     
 ## Elementor
 
@@ -8,7 +8,7 @@ Because of the huge number and ever-changing nature of community contributed Wor
   * Reporter: samuelsov
   * Problem:
   
-    Some smarty variable don't get replaced. For example, on a contribution page, the profile list are all shown as <%= title =%>
+    Some smarty variables don't get replaced. For example, on a contribution page, the profile list are all shown as <%= title =%>
     
 ## Qode Interactive themes/Bridge theme
 
