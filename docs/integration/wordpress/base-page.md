@@ -11,13 +11,13 @@ CiviCRM public pages are built by overlaying the WordPress front page with CiviC
 URLs that were previously of the form:
 
 ```
-http://example.org/?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=X
+http://example.org/?civiwp=CiviCRM&q=civicrm/contribute/transact&reset=1&id=X
 ```
 
 will now look like this:
 
 ```
-http://example.org/civicrm?page=CiviCRM&q=civicrm/contribute/transact&reset=1&id=X
+http://example.org/civicrm?civiwp=CiviCRM&q=civicrm/contribute/transact&reset=1&id=X
 ```
 
 !!! note
