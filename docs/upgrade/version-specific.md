@@ -10,7 +10,7 @@ For example, if you are upgrading from CiviCRM 4.1 to CiviCRM 4.3, then you shou
 
 ### SMTP Passwords
 
-The way CiviCRM stores SMTP passwords (and other credentials) will change in 5.34 to prepare for this you can add a credential encryption key to your `civicrm.settings.php` file. This key will be used to encrypt credentials in CiviCRM going forward. Changing this key will invalidate stored credentials.
+The way CiviCRM stores SMTP passwords (and other credentials) will change in 5.34. To prepare for this you can add a credential encryption key to your `civicrm.settings.php` file. This key will be used to encrypt credentials in CiviCRM going forward. Changing this key will invalidate stored credentials.
 
 ???+ note "Generating a credential encryption key."
     The credential encryption key should, ideally, be a 256-bit (32 byte) randomly generated string.
@@ -46,7 +46,7 @@ Note that the `::` before your key is required.
     If you change your credential encryption key at any point post-upgrade you need to tell CiviCRM to rotate the key and re-encrypt credentials with an APIv4 command. As an example you could run:
 
     ``` bash
-    cv api4 System.rotatekey tag=CRED
+    cv api4 System.rotateKey tag=CRED
     ```
 
     For more information please see [this core PR](https://github.com/civicrm/civicrm-core/pull/19251).
