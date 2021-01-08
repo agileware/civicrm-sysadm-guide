@@ -10,7 +10,7 @@ For example, if you are upgrading from CiviCRM 4.1 to CiviCRM 4.3, then you shou
 
 ### SMTP Passwords
 
-The way CiviCRM stores SMTP passwords will change in 5.34 to prepare for this you can add a credential encryption key to your `civicrm.settings.php` file. This key will be used to encrypt credentials in CiviCRM going forward. Changing this key will invalidate stored credentials.
+The way CiviCRM stores SMTP passwords (and other credentials) will change in 5.34 to prepare for this you can add a credential encryption key to your `civicrm.settings.php` file. This key will be used to encrypt credentials in CiviCRM going forward. Changing this key will invalidate stored credentials.
 
 ???+ note "Generating a credential encryption key."
     The credential encryption key should, ideally, be a 256-bit (32 byte) randomly generated string.
