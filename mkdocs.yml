@@ -1,7 +1,7 @@
 site_name: System Administrator Guide
 site_url: https://docs.civicrm.org/sysadmin/en/latest/
 repo_url: https://lab.civicrm.org/documentation/docs/sysadmin/
-edit_uri: https://lab.civicrm.org/-/ide/project/documentation/docs/sysadmin/tree/master/-/docs/
+edit_uri: https://lab.civicrm.org/documentation/docs/sysadmin/-/edit/master/docs/
 site_description: A guide for CiviCRM system administrators.
 site_author: The CiviCRM community
 theme: 
