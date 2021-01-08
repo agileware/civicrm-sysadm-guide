@@ -42,6 +42,15 @@ define('CIVICRM_CRED_KEYS', '::<KEY>');
 
 Note that the `::` before your key is required.
 
+??? caution "Changing your credential encryption key."
+    If you change your credential encryption key at any point post-upgrade you need to tell CiviCRM to rotate the key and re-encrypt credentials with an APIv4 command. As an example you could run:
+
+    ``` bash
+    cv api4 System.rotatekey tag=CRED
+    ```
+
+    For more information please see [this core PR](https://github.com/civicrm/civicrm-core/pull/19251).
+
 ## CiviCRM 5.29
 
 ### WordPress and `[civicrm.files]`
