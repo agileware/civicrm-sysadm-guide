@@ -4,7 +4,7 @@ CiviCRM integrates with WordPress as a plugin starting with WordPress version 3.
 
 CiviCRM public forms such as online contribution pages and event registration pages will be shown to the public in your selected WordPress theme. When logged in to the WordPress dashboard, CiviCRM will be shown as a link in the left sidebar menu.
 
-## Synchronize WordPress users to CivCRM contacts
+## Synchronize WordPress users to CiviCRM contacts
 
 CiviCRM offers a function to synchronize users to contacts: CiviCRM will check each user record for a contact record. A new contact record will be created for each user where one does not already exist. To perform this function go to **Administer -> Users and Permissions -> Synchronize Users to Contacts**.
 
