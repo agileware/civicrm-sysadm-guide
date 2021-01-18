@@ -57,10 +57,10 @@ nav:
     - Deliverability: setup/civimail/deliverability.md
   - Payment processors:
     - Payment processors: setup/payment-processors/index.md
-    - Recurring Payments: setup/payment-processors/recurring.md
+    - Recurring payments: setup/payment-processors/recurring.md
     - Authorize.net: setup/payment-processors/authorize-net.md
-    - Card Access: setup/payment-processors/card-access.md
-    - First Data: setup/payment-processors/first-data.md
+    - Card access: setup/payment-processors/card-access.md
+    - First data: setup/payment-processors/first-data.md
     - iATS: setup/payment-processors/iats.md
     - Moneris: setup/payment-processors/moneris.md
     - PayFlow: setup/payment-processors/payflow.md
@@ -90,7 +90,7 @@ nav:
   - Theme information: customize/theme.md
 - CMS Integration:
   - Drupal integration:
-    - Drupal Users, Roles and Groups integration: integration/drupal/index.md
+    - Drupal users, roles and groups integration: integration/drupal/index.md
     - Drupal views: integration/drupal/views.md
     - Webform (Drupal 8): https://docs.civicrm.org/webform-civicrm/en/latest/
     - Webform (Drupal 7): integration/drupal/webform.md
@@ -99,14 +99,14 @@ nav:
     - Mailhandler: integration/drupal/mailhandler.md
     - Incompatible modules: integration/drupal/incompatibilities.md
   - Backdrop integration:
-    - Backdrop Users, Roles and Groups integration: integration/backdrop/index.md
-    - Backdrop Views: integration/backdrop/views.md
+    - Backdrop users, roles and groups integration: integration/backdrop/index.md
+    - Backdrop views: integration/backdrop/views.md
     - Webform: integration/backdrop/webform.md
   - WordPress integration:
     - WordPress integration: integration/wordpress/index.md
     - Clean URLs: integration/wordpress/clean-urls.md
     - Forms in WordPress: integration/wordpress/forms.md
-    - Plugin Integration: integration/wordpress/plugins.md
+    - Plugin integration: integration/wordpress/plugins.md
     - Incompatible plugins: integration/wordpress/incompatibilities.md
   - Joomla integration:
     - Joomla integration: integration/joomla/index.md

@@ -80,4 +80,4 @@ if (!defined('CIVICRM_CLEANURL')) {
 !!! note "Notes"
     Old style URLs will still work so you won't break any existing links to your website.
 
-    Clean URLs don't effect how shortcodes work in CiviCRM.
+    Clean URLs don't affect how shortcodes work in CiviCRM.
