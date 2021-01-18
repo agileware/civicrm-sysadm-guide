@@ -6,6 +6,51 @@ Here you will find special steps needed when your upgrade crosses certain CiviCR
 
 For example, if you are upgrading from CiviCRM 4.1 to CiviCRM 4.3, then you should check this page for *both* "CiviCRM 4.2" and "CiviCRM 4.3" since your upgrade "crosses" both of those versions.
 
+## CiviCRM 5.34
+
+### SMTP Passwords
+
+The way CiviCRM stores SMTP passwords (and other credentials) will change in 5.34. To prepare for this you can add a credential encryption key to your `civicrm.settings.php` file. This key will be used to encrypt credentials in CiviCRM going forward. Changing this key will invalidate stored credentials.
+
+???+ note "Generating a credential encryption key."
+    The credential encryption key should, ideally, be a 256-bit (32 byte) randomly generated string.
+
+    Some examples to generate a suitable credential key are given below.
+    
+    **PHP:**
+    
+    ``` php
+    php -r 'echo trim(base64_encode(random_bytes(32)), "=") . "\n";'
+    ```
+
+    **Bash:**
+
+    ``` bash
+    od  -vN "16" -An -tx1             /dev/urandom | tr -d " \n" ; echo
+    ```
+
+    **PowerShell:**
+    ``` powershell
+    -join (((48..57)+(65..90)+(97..122)) * 80 |Get-Random -Count 32 |%{[char]$_})
+    ```
+    
+Once you have your 32 byte key (recommended!) you should add this to your `civicrm.settings.php` file as follows:
+
+``` php
+define('CIVICRM_CRED_KEYS', '::<KEY>');
+```
+
+Note that the `::` before your key is required.
+
+??? caution "Changing your credential encryption key."
+    If you change your credential encryption key at any point post-upgrade you need to tell CiviCRM to rotate the key and re-encrypt credentials with an APIv4 command. As an example you could run:
+
+    ``` bash
+    cv api4 System.rotateKey tag=CRED
+    ```
+
+    For more information please see [this core PR](https://github.com/civicrm/civicrm-core/pull/19251).
+
 ## CiviCRM 5.29
 
 ### WordPress and `[civicrm.files]`
@@ -14,7 +59,7 @@ The CiviCRM "files" folder (a.k.a.  `[civicrm.files]`) stores runtime data, such
 certain caches.  The folder is created automatically during installation.  However, the default location of this folder
 has evolved, and some systems require a manual update.
 
-!!! note "How has the folder changed?"
+??? note "How has the folder changed?"
 
     The *de facto* typical location changed:
 
@@ -37,13 +82,13 @@ has evolved, and some systems require a manual update.
     however, this did not provide adequate documentation/support for the migration.  It was rolled back in 5.27.4 and
     deferred to 5.29.
 
-!!! note "Why has the location evolved?"
+??? note "Why has the location evolved?"
 
     The original location did not match the WordPress convention for runtime data-storage.  For some environments and
     configurations, this created compatibility or installation problems.  With the changes in 4.7 and 5.29, CiviCRM is
     better aligned with the convention - leading to better long-term compatibility.
 
-!!! note "How do I know what the real location is?"
+??? note "How do I know what the real location is?"
 
     Use a shell or file-manager to examine the filesystem and determine where there is actual data.  In particular,
     look at both:
@@ -74,7 +119,7 @@ After determining where the data currently lives, we can suggest a course of act
 | Both folders have real data | See "How To: Merge or migrate the folder" |
 | Neither folder has real data | It doesn't matter what you do |
 
-!!! tip "How To: Configure the folder explicitly"
+??? tip "How To: Configure the folder explicitly"
 
     The aim of this approach is to preserve the original location of `[civicrm.files]`.  If there are any external
     references to the original location (such as hyperlinks or backup tools), they will continue to work.  We can
@@ -92,7 +137,7 @@ After determining where the data currently lives, we can suggest a course of act
        $civicrm_paths['civicrm.files']['url'] = 'https://example.com/wp-content/plugins/files/civicrm';
        ```
 
-!!! tip "How To: Merge or migrate the folder"
+??? tip "How To: Merge or migrate the folder"
 
     The aim of this approach is to re-arrange your filesystem to match the new defaults.  This makes the configuration "thinner" or "more
     portable", and it can resolve a split, but it may require more expertise and attention.  Be sure to read the full instructions first.
