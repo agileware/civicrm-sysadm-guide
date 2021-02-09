@@ -1,4 +1,12 @@
-# Plugin integration
+# WordPres integration
+
+## CiviCRM extensions
+
+The following CiviCRM extensions have been developed to improve the integration between CiviCRM and WordPress.
+
+### [Wordpress integration for CiviMail with Mosaico](https://github.com/skyslasher/de.ergomation.wp-civi-mosaico)
+
+This CiviCRM extension integrates WordPress with the CiviCRM mail editor replacement Mosaico. The gallery uses the WordPress media library. It also contains an enhanced Versafix template with a new template block. This block comes with a property editor that shows all available WordPress posts. It applies the post title, excerpt with adjustable length an a read more button with just one click. In addition, section margins can be applied and href anchors can be set to allow an easy in-mail navigation via a TOC. As a bonus, embedding images into HTML mails can be optionally set (Mailings->WordPress - Mosaico integration settings). This feature generates larger emails, but images are immediately visible when viewing the mail, without having to allow remote images in the mail program.
 
 ## Plugins
 
