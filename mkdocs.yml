@@ -43,6 +43,7 @@ nav:
   #- Monitoring: setup/monitoring.md
   - Securing your site: setup/security.md
   #- Data migration: setup/migration.md
+  - Credential encryption key: setup/cred-key.md 
   - Site key: setup/site-key.md
   - Scheduled jobs: setup/jobs.md
   - Directories: setup/directories.md
