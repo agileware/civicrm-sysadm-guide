@@ -26,17 +26,16 @@ This is a [known issue](http://issues.civicrm.org/jira/browse/CRM-8221).
 
 ### PHP Configuration Requirements
 
-The following PHP extensions must be enabled in order for CiviCRM to interface with PayPal's payment services:
+The following are the PHP requirements for integrating CiviCRM with PayPal's payment services (as of February 2021 https://www.paypal.com/ca/smarthelp/article/what-version-of-php-is-required-to-use-the-paypal-sdk-for-php-ts1057):
 
-* PHP Perl Compatible Regular Expressions extension for PHP 4.3.0+ and higher
-* PHP cURL extension for PHP 4.3.0+ and higher with SSL support
-* PHP OpenSSL extension for PHP 4.3.0+ and higher (for digital certificate transcoding)
-* **As of Aug 20, 2007 - The version of PayPal Payments Pro API used by CiviCRM 1.9 and below is apparently not compatible with PHP 5.2.3+. If you are running 5.2.3+, you will need to upgrade to CiviCRM 2.0 which uses the newer PayPal API and IS compatible with PHP 5.2.x+.**
+* PHP 5.3 and above
+* PHP cURL extension with support for OpenSSL
+* PHP OpenSSL extension
+* Composer
 
 Use phpInfo() to check for these extensions. You should see the following lines:
 
 ```
-PCRE (Perl Compatible Regular Expressions) Support => enabled
 CURL support => enabled
 OpenSSL support => enabled
 ```
