@@ -121,6 +121,9 @@ Notes:
 
 ### cli.php method {:#php-cli}
 
+???+ warning "Drupal 8 and Drupal 9"
+     Use of the `cli.php` cron method is **not recommended** on Drupal 8 or 9 sites, where possible you should use `cv` or `drush`. The `cli.php` method may work on your Drupal 8 or 9 site however it's not well tested on these platforms and due to how paths on these platforms are setup issues are more frequent than they may be with other CMS options.
+
 ```bash
 /path/to/php /path/to/civcrm/bin/cli.php \
   -s example.org \
