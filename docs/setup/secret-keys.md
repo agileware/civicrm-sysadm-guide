@@ -1,6 +1,6 @@
 # Secret keys
 
-CiviCRM relies on a handful of secret keys to protect system security.
+CiviCRM relies on a handful of secret keys to facilitate system security, secure credentials and authenticate users.
 
 | Name | Purpose | Recommended Size | Version |
 | -- | -- | -- | -- |
