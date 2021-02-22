@@ -221,7 +221,7 @@ You must assign your new Payment Processor to your Contribution Page or Event Re
 
 ## Recurring Contributions
 
-As of version 3.1, CiviCRM supports Paypal Pro recurring contributions. Prior versions of CiviCRM do NOT support Pro recurring contributions.
+CiviCRM supports Paypal Pro recurring contributions.
 
 The differences between Paypal Standard Subscriptions and Paypal Pro Recurring Contributions are as follows:
 
