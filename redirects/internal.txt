@@ -20,3 +20,5 @@ planning/cms https://docs.civicrm.org/installation/en/latest/planning/cms/
 planning/demo https://docs.civicrm.org/installation/en/latest/planning/demo/
 planning/hosting https://docs.civicrm.org/installation/en/latest/planning/hosting/
 planning/transition https://docs.civicrm.org/installation/en/latest/planning/transition/
+setup/cred-key https://docs.civicrm.org/sysadmin/en/latest/setup/secret-keys/
+setup/site-key https://docs.civicrm.org/sysadmin/en/latest/setup/secret-keys/

@@ -41,10 +41,9 @@ nav:
   - Setup: setup/index.md
   - Backups: setup/backups.md
   #- Monitoring: setup/monitoring.md
+  - Secrets: setup/secret-keys.md
   - Securing your site: setup/security.md
   #- Data migration: setup/migration.md
-  - Credential encryption key: setup/cred-key.md 
-  - Site key: setup/site-key.md
   - Scheduled jobs: setup/jobs.md
   - Directories: setup/directories.md
   - Caches: setup/cache.md
