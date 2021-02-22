@@ -6,6 +6,25 @@ Here you will find special steps needed when your upgrade crosses certain CiviCR
 
 For example, if you are upgrading from CiviCRM 4.1 to CiviCRM 4.3, then you should check this page for *both* "CiviCRM 4.2" and "CiviCRM 4.3" since your upgrade "crosses" both of those versions.
 
+## CiviCRM 5.36
+
+### Signing key
+
+CiviCRM 5.36 introduces a mechanism for signing security tokens. This mechanism is not immediately required for any core user-interfaces. However, it may be
+required by extensions or future releases. It requires that you define [a secret key](../setup/secret-keys.md) called `CIVICRM_SIGN_KEYS`.
+A typical value in `civicrm.settings.php` looks like this:
+
+```php
+<?php
+define('CIVICRM_SIGN_KEYS', 'jwt-hs256::r4Nd0Mv4LU3');
+```
+
+Note the use of `define()` and `jwt-hs256::`. For full information, see:
+
+1. [Locating `civicrm.settings.php`](../setup/secret-keys.md#edit-settings)
+1. [Generating a new 256-bit secret](../setup/secret-keys.md#generate-secrets)
+3. [Specification of `CIVICRM_SIGN_KEYS`](../setup/secret-keys.md#civicrm_sign_keys)
+
 ## CiviCRM 5.34
 
 ### SMTP Passwords
