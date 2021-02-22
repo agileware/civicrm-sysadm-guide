@@ -10,46 +10,18 @@ For example, if you are upgrading from CiviCRM 4.1 to CiviCRM 4.3, then you shou
 
 ### SMTP Passwords
 
-The way CiviCRM stores SMTP passwords (and other credentials) will change in 5.34. To prepare for this you can add a credential encryption key to your `civicrm.settings.php` file. This key will be used to encrypt credentials in CiviCRM going forward. Changing this key will invalidate stored credentials.
+The way CiviCRM stores SMTP passwords (and other credentials) changes in 5.34. It provides improved encryption support, but it also requires you to define [a secret key](../setup/secret-keys.md) called `CIVICRM_CRED_KEYS`. A typical value in `civicrm.settings.php` looks like this:
 
-???+ note "Generating a credential encryption key."
-    The credential encryption key should, ideally, be a 256-bit (32 byte) randomly generated string.
-
-    Some examples to generate a suitable credential key are given below.
-    
-    **PHP:**
-    
-    ``` php
-    php -r 'echo trim(base64_encode(random_bytes(32)), "=") . "\n";'
-    ```
-
-    **Bash:**
-
-    ``` bash
-    od  -vN "16" -An -tx1             /dev/urandom | tr -d " \n" ; echo
-    ```
-
-    **PowerShell:**
-    ``` powershell
-    -join (((48..57)+(65..90)+(97..122)) * 80 |Get-Random -Count 32 |%{[char]$_})
-    ```
-    
-Once you have your 32 byte key (recommended!) you should add this to your `civicrm.settings.php` file as follows:
-
-``` php
-define('CIVICRM_CRED_KEYS', '::<KEY>');
+```php
+<?php
+define('CIVICRM_CRED_KEYS', '::r4Nd0Mv4LU3');
 ```
 
-Note that the `::` before your key is required.
+Note the use of `define()` and `::`. For full information, see:
 
-??? caution "Changing your credential encryption key."
-    If you change your credential encryption key at any point post-upgrade you need to tell CiviCRM to rotate the key and re-encrypt credentials with an APIv4 command. As an example you could run:
-
-    ``` bash
-    cv api4 System.rotateKey tag=CRED
-    ```
-
-    For more information please see [this core PR](https://github.com/civicrm/civicrm-core/pull/19251).
+1. [Locating `civicrm.settings.php`](../setup/secret-keys.md#edit-settings)
+1. [Generating a new 256-bit secret](../setup/secret-keys.md#generate-secrets)
+3. [Specification of `CIVICRM_CRED_KEYS`](../setup/secret-keys.md#civicrm_cred_keys)
 
 ## CiviCRM 5.29
 
