@@ -102,7 +102,7 @@ Each secret should be generated randomly, and it should be long enough to resist
     OjVxMkq89tdDP96g
     ```
 
-These formulas primarily output letters and numbers, but they may somtimes output three symbols (`/` `+` `=`). These symbols are legal in most cases.
+These formulas primarily output letters and numbers, but they may sometimes output three symbols (`/` `+` `=`). These symbols are legal in most cases.
 
 ??? tip "Tip: Avoid symbols in `CIVICRM_SITE_KEY`"
 
