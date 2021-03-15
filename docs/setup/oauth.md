@@ -2,11 +2,19 @@
 
 The OAuth protocols define an access-control system for Internet-based services.  Compared to traditional access-control mechanisms (like
 simple password-based logins), OAuth provides more security features.  For example, it can grant limited access to specific resources, and
-it can de-list devices or applications which misbehave.  These features make it well-suited to large-scale technology providers like
-Google, Microsoft, or Facebook.  If you wish to have CiviCRM interact with their APIs, then you probably need to configure OAuth.
+it can de-list devices or applications which misbehave.  These features make it well-suited to mobile applications and large web
+applications; consequently, many large-scale technology providers (such as Google, Microsoft, or Facebook) mandate OAuth.
 
-At time of writing, most implementations use OAuth version 2 (OAuth2).  We will briefly recap OAuth2 from a system-administration
-perspective and then dig into some specifics.
+OAuth integrations involve a *client* and *provider*. Conceptually, CiviCRM can play either role -- for example:
+
+* _Client role_: A staffer using Civi's case-management system wishes to send email with their professional email account hosted by
+  Google or Microsoft. CiviCRM would be an OAuth client requesting access to Google Mail APIs or Microsoft Exchange APIs.
+* _Provider role_: A staffer with an iOS/Android app wishes to lookup CiviCRM `Event` participants.  The mobile device is the OAuth client
+  requesting access to CiviCRM's Event APIs.
+
+This chapter briefly examines an OAuth v2 example and highlights key elements which affect system administration.  The example will use
+CiviCRM as a client -- because (at time of writing) this is the only implemented role.  Finally, the chapter will also dig into some
+specific tasks for configuring CiviCRM and OAuth v2.
 
 ## Primer
 
