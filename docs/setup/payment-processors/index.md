@@ -38,7 +38,7 @@ Optionally provide a description for the payment processor, and indicate if the 
 | [PayJunction](payjunction.md)          | Extension | SSL      |            |            |           |
 | Payment Express (DPS)                  | Extension | External | Yes        | Many       | Yes       |
 | [Ogone](ogone.md)                      | Extension |          |            |            | No        |
-| eWay                                   | Extension | SSL      | Yes        | AU         |           |
+| eWay                                   | Extension | SSL      | Yes        | AU         | Yes       |
 | [First Data](first-data.md)            | Extension | SSL      | No         |            |           |
 | Elavon / Nova                          | Extension | SSL      | No         |            |           |
 | World Pay                              | Extension |          |            |            |           |
@@ -80,7 +80,7 @@ Core* -> Extension that ships with Core.
 
 * **Payment Express (DPS)**: This option is a good one if you do a lot of transactions (e.g. $1000-$2000 per month) You can expect to pay a monthly rate for this and possibly a monthy fee to DPS - depending on your bank's package. If you are in New Zealand Westpac sells this as its WIPS plus product. At time of writing this was cheaper than the other banks.We found that although they told us we needed to have other accounts with Westpac this was primarily a credibility issue and they were prepared to trust us based on our personal history with them. Both pxaccess & pxpay methods are supported. <http://www.paymentexpress.com/index.html> Community contributed (Eileen & Lucas Baker) 
 
-* **eWay**: In Core Community Contributed (Peter Barwell of Dolphin Software, Henare Degan, Chris Ward) 
+* **eWay**: Stable CiviCRM Extension developed by [Agileware](https://agileware.com.au), download from [https://civicrm.org/extensions/eway-recurring-payment-processor-agileware]
 
 * **First Data**: This code is still being tested and is not in the Core yet Community Contribution (Eileen) 
 
