@@ -60,12 +60,16 @@ In some testing there hasn't been any indication of any significant performance 
 
 1. Set Logging to **Yes**.
 
+1. Alternatively, using the [`cv`](https://docs.civicrm.org/installation/en/latest/general/cli-cv/) command line utility, you can enable logging with `cv api setting.create logging=1`.
+
 
 ## Turning off logging
 
 1. Go to **Administer › System Settings - Misc (Undelete, PDFs, Limits, Logging, Captcha, etc.)**
 
 1. Set Logging to **No**.
+
+1. Alternatively, using the [`cv`](https://docs.civicrm.org/installation/en/latest/general/cli-cv/) command line utility, you can disable logging with `cv api setting.create logging=0`.
 
 If you want to turn on logging again, after it's been off for some time, you can do so without losing any of the previous log data. New log data will simply be appended to the log tables.
 
