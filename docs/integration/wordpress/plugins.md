@@ -1,4 +1,4 @@
-# WordPres integration
+# WordPress integration
 
 ## CiviCRM extensions
 
@@ -62,7 +62,7 @@ It is not currently possible to disable the synchronisation or synchronise an ex
 
 ### [CiviCRM ACF Integration](https://github.com/christianwach/civicrm-acf-integration)
 
-CiviCRM ACF (Advanced Custom Fields) Integration is a WordPress plugin that enables integration between CiviCRM Entities and WordPress Entities with data synced via [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) plugin.
+CiviCRM ACF (Advanced Custom Fields) Integration is a WordPress plugin that enables integration between CiviCRM Entities and WordPress Entities with data synced via [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) plugin.  **Note This plugin is in the process of being merged into [Profile Sync](https://wordpress.org/plugins/civicrm-wp-profile-sync/)**
 
 [Documentation](https://github.com/christianwach/civicrm-acf-integration/blob/master/README.md)
 
@@ -112,7 +112,7 @@ This plugin adds integration for CiviCRM to contact form 7. With this plugin it 
 
 Event Calendar Extension allows you to show all CiviCRM events in a calendar by month, day or week. The setting page allows you to select which events should be shown on the calendar with the color you want for particular event type. The setting page configuration for event types filters allows you to filter by particular event types on calendar and change colors.
 
-After installing the extension in CiviCRM - copy the folder `yourextensiondirectory/com.osseed.eventcalendar/wordpress/wordpress-event-calendar` to `wordpressdirectory/wp-content/plugins/` and activate the wordpress plugin.  You will then be able to add a shortcode to any page or post in which you would like to display a calendar of your events. 
+After installing the extension in CiviCRM - copy the folder `yourextensiondirectory/com.osseed.eventcalendar/wordpress/wordpress-event-calendar` to `wordpressdirectory/wp-content/plugins/` and activate the WordPress plugin.  You will then be able to add a shortcode to any page or post in which you would like to display a calendar of your events. 
 
 [Download](https://github.com/osseed/com.osseed.eventcalendar/releases)
 
