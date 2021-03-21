@@ -1,5 +1,7 @@
 # WordPress integration
 
+Many WordPress plugins indicate they support CiviCRM in some way: https://wordpress.org/search/civicrm.
+
 ## CiviCRM extensions
 
 The following CiviCRM extensions have been developed to improve the integration between CiviCRM and WordPress.
