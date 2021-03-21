@@ -1,17 +1,20 @@
 # OAuth
 
-!!! warning "OAuth2 client support is being phased-in with CiviCRM v5.32+."
-
-    This page discusses support for CiviCRM as an OAuth2 client. This is introduced in CiviCRM v5.32, but it is hidden by default.
-    It will be more visible in future versions.
-
 The OAuth protocols define an access-control system for Internet-based services.  Compared to traditional access-control mechanisms (like
 simple password-based logins), OAuth provides more security features.  For example, it can grant limited access to specific resources, and
-it can de-list devices or applications which misbehave.  These features make it well-suited to large-scale technology providers like
-Google, Microsoft, or Facebook.  If you wish to have CiviCRM interact with their APIs, then you probably need to configure OAuth.
+it can de-list devices or applications which misbehave.  These features make it well-suited to mobile applications and large web
+applications; consequently, many large-scale technology providers (such as Google, Microsoft, or Facebook) mandate OAuth.
 
-At time of writing, most implementations use OAuth version 2 (OAuth2).  We will briefly recap OAuth2 from a system-administration
-perspective and then dig into some specifics.
+OAuth integrations involve a *client* and *provider*. Conceptually, CiviCRM can play either role -- for example:
+
+* _Client role_: A staffer using Civi's case-management system wishes to send email with their professional email account hosted by
+  Google or Microsoft. CiviCRM would be an OAuth client requesting access to Google Mail APIs or Microsoft Exchange APIs.
+* _Provider role_: A staffer with an iOS/Android app wishes to lookup CiviCRM `Event` participants.  The mobile device is the OAuth client
+  requesting access to CiviCRM's Event APIs.
+
+This chapter briefly examines an OAuth v2 example and highlights key elements which affect system administration.  The example will use
+CiviCRM as a client -- because (at time of writing) this is the only implemented role.  Finally, the chapter will also dig into some
+specific tasks for configuring CiviCRM and OAuth v2.
 
 ## Primer
 
@@ -60,10 +63,20 @@ In practice, real-world pages will vary.  For example: some providers may put al
 split it across multiple pages.  If you understand the general steps, then you may be able to figure out the details.  However, we discuss
 a few specific cases below (["Register the connection"](#register)).
 
+## Version history
+
+* __CiviCRM v5.32__: Introduced a hidden extension, `oauth-client`, as part of `civicrm-core`.
+* __CiviCRM v5.33__: Promoted the extension, `oauth-client`, to full visibility.
+
 ## Enable the module
 
-The CiviCRM OAuth Client is a core extension. It was added in CiviCRM v5.32; however, it is hidden by default. You can enable it using
-the command-line or the Javascript console.
+The CiviCRM OAuth Client is a core extension. Enable it via web interface or command line interface.
+
+??? howto "Enable via web"
+
+    * Login to CiviCRM as administrator
+    * Navigate to `Administer > System Settings > Extension`
+    * Find "OAuth Client" and click "Install"
 
 ??? howto "Enable via command line"
 
@@ -82,17 +95,6 @@ the command-line or the Javascript console.
     ```
 
     <!-- TODO: sometime in 2021+, change `oauth_client` to `oauth-client`. The dash is more canonical. Current cv accepts either. However, older versions of cv had a bug with the dashed form.. -->
-
-??? howto "Enable via Javascript console"
-
-    * Login to CiviCRM backend UI. Any page in `/civicrm` will work.
-    * In the web browser menu, open the Javascript console, e.g.
-        * (Chrome, circa 2020): "View => Developer => Javascript Console"
-        * (Firefox circa 2020): "Tools => Web Developer => Web Console"
-    * Enter this command:
-      ```
-      CRM.api3('Extension', 'install', {keys: ['oauth-client']})
-      ```
 
 ## Register the connection {:#register}
 
