@@ -6,6 +6,25 @@ Here you will find special steps needed when your upgrade crosses certain CiviCR
 
 For example, if you are upgrading from CiviCRM 4.1 to CiviCRM 4.3, then you should check this page for *both* "CiviCRM 4.2" and "CiviCRM 4.3" since your upgrade "crosses" both of those versions.
 
+## CiviCRM 5.37
+
+### Token format
+
+CiviCRM 5.37 reconciled a split in how some tokens were formatted.
+
+| Data Type | Standard Formatting | Raw Formatting |
+| -- | -- | -- |
+| Date | `01/20/2020 12:00:00 am` (*localized*) | `2020-01-20 00:00:00` (*MySQL*) |
+| Dropdown / Radio / Checkbox (Option Value) | `Purple` (*label*) | `P` (*value*) |
+| Contact reference fields | `Mr Orson Welles` (*name*) | `7` (*ID*) |
+| Link | `<a href='https://civicrm.org'>https://civicrm.org</a>` (*hyperlink*) | `https://civicrm.org` (*url*) |
+
+In most contexts, CiviCRM tokens output standard formatting, but a handful of outliers outputted raw formatting.  Outliers were Scheduled Reminders,
+Mosaico Templates, and PDF letters.  These will now output standard formatting ([PR #19806](https://github.com/civicrm/civicrm-core/pull/19806)).
+
+This change should improve readability in many cases.  However, if you used the tokens to generate hyperlinks or evaluate Smarty conditionals, then
+you may need to switch back to raw format.  If you would like enable raw formatting, then install [rawtoken](https://lab.civicrm.org/extensions/rawtoken/). 
+
 ## CiviCRM 5.36
 
 ### Signing key
