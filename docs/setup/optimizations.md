@@ -59,13 +59,13 @@ For example, you might consider (if it makes sense in your environment) the foll
 - All dirs starting with a dot (`.git`, `.svn`, `.secret`, `.env` etc.)
 - All `node_modules` dirs - these can be enormous.
 - All `js` and `css` dirs - if you're sure CiviCRM doesn't need to look in there (it doesn't as of 5.29)
-- All `bower_components` and `packages` and `vendor` dirs - these contain 3rd party library code.
+- All `bower_components` and `packages` and `vendor` dirs - these contain 3rd party library code. On Drupal8 we need to *include* `vendor/civicrm/civicrm-core/ext` otherwise core extensions won't be found.
 - The `sites/default/files/private` dir, which is a local example that might be where Drupal's private managed files are kept.
 
 ```php
 <?php
 if (!defined('CIVICRM_EXCLUDE_DIRS_PATTERN')) {
-   define('CIVICRM_EXCLUDE_DIRS_PATTERN', '@/(\.|node_modules|js/|css/|bower_components|packages/|vendor/|sites/default/files/private)@');
+   define('CIVICRM_EXCLUDE_DIRS_PATTERN', '@/(?!vendor/civicrm/civicrm-core/ext)(\.|node_modules|js/|css/|bower_components|packages/|vendor/|sites/default/files/private)@');
 }
 ```
 
