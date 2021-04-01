@@ -65,7 +65,7 @@ For example, you might consider (if it makes sense in your environment) the foll
 ```php
 <?php
 if (!defined('CIVICRM_EXCLUDE_DIRS_PATTERN')) {
-   define('CIVICRM_EXCLUDE_DIRS_PATTERN', '@/(?!vendor/civicrm/civicrm-core/ext)(\.|node_modules|js/|css/|bower_components|packages/|vendor/|sites/default/files/private)@');
+   define('CIVICRM_EXCLUDE_DIRS_PATTERN', '@/(?:\.|node_modules|js/|css/|bower_components|packages/|vendor/(?!civicrm/civicrm-core/ext)|sites/default/files/private)@');
 }
 ```
 
