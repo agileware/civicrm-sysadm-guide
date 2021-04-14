@@ -48,6 +48,7 @@ nav:
   - Directories: setup/directories.md
   - Caches: setup/cache.md
   - OAuth: setup/oauth.md
+  - API Keys: setup/api-keys.md
   - CiviMail setup:
     - CiviMail setup: setup/civimail/index.md
     - Outbound mail: setup/civimail/outbound.md
