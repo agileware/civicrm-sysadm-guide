@@ -4,6 +4,16 @@ CiviCRM integrates with WordPress as a plugin starting with WordPress version 3.
 
 CiviCRM public forms such as online contribution pages and event registration pages will be shown to the public in your selected WordPress theme. When logged in to the WordPress dashboard, CiviCRM will be shown as a link in the left sidebar menu.
 
+## Recommended WordPress Permalink Settings
+
+WordPress by default will use the "Plain" option for the custom URL structure as defined on the page, /wp-admin/options-permalink.php
+
+Using the "Plain" custom URL structure may be incompatible with some CiviCRM page URLs and so is discouraged.
+
+Change this to one of the other URL structure options. In general, it is good for SEO to use either:
+* Post name, or
+* Custom Structure
+
 ## Synchronize WordPress users to CiviCRM contacts
 
 CiviCRM offers a function to synchronize users to contacts: CiviCRM will check each user record for a contact record. A new contact record will be created for each user where one does not already exist. To perform this function go to **Administer -> Users and Permissions -> Synchronize Users to Contacts**.
