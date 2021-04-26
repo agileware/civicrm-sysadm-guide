@@ -25,9 +25,9 @@ Optionally provide a description for the payment processor, and indicate if the 
     If you need to do anything with payments in the European Union you are likely to come across [SEPA](https://en.wikipedia.org/wiki/Single_Euro_Payments_Area). If you need to deal with SEPA payments, there is an extension that supports this: [CiviSepa](https://civicrm.org/extensions/civisepa-sepa-direct-debit-extension)
 
 
-| Processor Name                                                   | In        | Type     | Recurring? | Countries  | Merchant? |
-| ---                                                              | ---       | ---      | ---        | ---        | ---       |
-| Dummy (for testing only)                                         | Core      |          |            |            |           |
+| Processor Name                         | In        | Type     | Recurring? | Countries  | Merchant? |
+| ---                                    | ---       | ---      | ---        | ---        | ---       |
+| Dummy (for testing only)               | Core      |          |            |            |           |
 | [Authorize.net](authorize-net.md)      | Core      | SSL      | Yes        | Many       | Yes       |
 | [PayPal_Standard](paypal-standard.md)  | Core      | External | Yes        | Many       | No        |
 | [PayPal Pro](paypal-pro.md)            | Core      | SSL      | Yes        | Many       |           |
@@ -45,11 +45,11 @@ Optionally provide a description for the payment processor, and indicate if the 
 | Sogenactif                             | Extension | External |            |            |           |
 | eProcessing Network                    | Extension | SSL      | No         |            | Yes       |
 | Quickbooks Merchant Services           | Extension | SSL      | No         |            | Yes       |
-| [Payflow Pro](payflow.md)              | Extension | SSL      | No         |            |           |
+| [Payflow Pro](payflow.md)              | Extension | SSL      | No         |            | Yes       |
 | Barclays                               | Extension | SSL      |            |            |           |
 | Card Access Services                   | Extension | External | No         | AU         | Yes       |
 | Vanco                                  | Extension | SSL      | Yes        |            | Yes       |
-| [Stripe](https://docs.civicrm.org/stripe/en/latest/)             | Extension | SSL      | Yes        | Many       | Yes       |
+| [Stripe](https://docs.civicrm.org/stripe/en/latest/) | Extension | SSL      | Yes        | Many       | Yes       |
 | clickandpledge                         | Extension | SSL      | No         | US         | No        |
 
 ### Key
@@ -65,7 +65,8 @@ Core* -> Extension that ships with Core.
 * **Recurring** - Is this payment processor capable of handling recurring donations and auto-renewing memberships?
     * PayPal Express: Users can create recurring contributions, but subsequent contributions must be entered manually into CiviCRM. 3rd party script providing automation of this process may be available from Koumbit.org
     * Payment Express (DPS): No, Payment Express can do 'triggered' recurring transations but there is no CiviCRM support for this
-    * eWay: Code written but needs further customisation, see [work in progress](https://github.com/henare/CiviCRM-eWay-recurring-payment-processor)
+    * eWay: Can be used to create Recurring Memberships and Contributions, see [Eway Extension by Agileware](https://civicrm.org/extensions/eway-recurring-payment-processor-agileware), There was also an initial work in a [Legacy Extension](https://github.com/henare/CiviCRM-eWay-recurring-payment-processor), this shouldn't be used as it references deprecated end points.
+    * PayFlow Pro: can support the creation of Recurring Contributions and Memberships but as yet there is no code to query and import the subsequent transactions back into CiviCRM.
 
 
 ### Notes
@@ -80,7 +81,7 @@ Core* -> Extension that ships with Core.
 
 * **Payment Express (DPS)**: This option is a good one if you do a lot of transactions (e.g. $1000-$2000 per month) You can expect to pay a monthly rate for this and possibly a monthy fee to DPS - depending on your bank's package. If you are in New Zealand Westpac sells this as its WIPS plus product. At time of writing this was cheaper than the other banks.We found that although they told us we needed to have other accounts with Westpac this was primarily a credibility issue and they were prepared to trust us based on our personal history with them. Both pxaccess & pxpay methods are supported. <http://www.paymentexpress.com/index.html> Community contributed (Eileen & Lucas Baker) 
 
-* **eWay**: Stable CiviCRM Extension developed by [Agileware](https://agileware.com.au), download from [https://civicrm.org/extensions/eway-recurring-payment-processor-agileware]
+* **eWay**: Stable CiviCRM Extension developed by [Agileware](https://agileware.com.au), download from the [Extension Listing](https://civicrm.org/extensions/eway-recurring-payment-processor-agileware)
 
 * **First Data**: This code is still being tested and is not in the Core yet Community Contribution (Eileen) 
 
