@@ -35,7 +35,9 @@ A typical value in `civicrm.settings.php` looks like this:
 
 ```php
 <?php
+if (!defined('CIVICRM_SIGN_KEYS')) {
 define('CIVICRM_SIGN_KEYS', 'jwt-hs256::r4Nd0Mv4LU3');
+}
 ```
 
 Note the use of `define()` and `jwt-hs256::`. For full information, see:
@@ -52,7 +54,9 @@ The way CiviCRM stores SMTP passwords (and other credentials) changes in 5.34. I
 
 ```php
 <?php
+if (!defined('CIVICRM_CRED_KEYS')) {
 define('CIVICRM_CRED_KEYS', '::r4Nd0Mv4LU3');
+}
 ```
 
 Note the use of `define()` and `::`. For full information, see:
