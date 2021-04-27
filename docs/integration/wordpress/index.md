@@ -11,8 +11,9 @@ WordPress by default will use the "Plain" option for the custom URL structure as
 Using the "Plain" custom URL structure may be incompatible with some CiviCRM page URLs and so is discouraged.
 
 Change this to one of the other URL structure options. In general, it is good for SEO to use either:
-* Post name, or
-* Custom Structure
+
+- Post name, or
+- Custom Structure
 
 ## Synchronize WordPress users to CiviCRM contacts
 
